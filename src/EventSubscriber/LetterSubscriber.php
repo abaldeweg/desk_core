@@ -39,7 +39,7 @@ class LetterSubscriber implements EventSubscriberInterface
 
         $this->pdf->create(
             $path,
-            $letter->getTitle(),
+            str_replace('./', '', $letter->getTitle()),
             $letter->getContent(),
             $letter->getMeta()
         );
