@@ -10,6 +10,17 @@ class LetterTest extends WebTestCase
 
     public function testScenario()
     {
+        $meta = <<<EOT
+sender: value
+receiver: value
+details: value
+subject: value
+salutation: value
+valediction: value
+signee: value
+logo: value
+EOT;
+
         // list
         $request = $this->request('/api/letter/', 'GET');
 
@@ -18,13 +29,13 @@ class LetterTest extends WebTestCase
         // new
         $request = $this->request('/api/letter/new', 'POST', [], [
             'title' => 'title',
-            'meta' => 'meta',
+            'meta' => $meta,
             'content' => 'content'
         ]);
 
         $this->assertTrue(isset($request));
         $this->assertEquals('title', $request->title);
-        $this->assertEquals('meta', $request->meta);
+        $this->assertIsString($request->meta);
         $this->assertEquals('content', $request->content);
 
         $id = $request->id;
@@ -32,13 +43,13 @@ class LetterTest extends WebTestCase
         // edit
         $request = $this->request('/api/letter/' . $id, 'PUT', [], [
             'title' => 'title2',
-            'meta' => 'meta2',
+            'meta' => $meta,
             'content' => 'content2'
         ]);
 
         $this->assertTrue(isset($request));
         $this->assertEquals('title2', $request->title);
-        $this->assertEquals('meta2', $request->meta);
+        $this->assertIsString($request->meta);
         $this->assertEquals('content2', $request->content);
 
         // show
@@ -46,7 +57,7 @@ class LetterTest extends WebTestCase
 
         $this->assertTrue(isset($request));
         $this->assertEquals('title2', $request->title);
-        $this->assertEquals('meta2', $request->meta);
+        $this->assertIsString($request->meta);
         $this->assertEquals('content2', $request->content);
 
         // delete
