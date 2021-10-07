@@ -9,8 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Letter
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
+    #[ORM\GeneratedValue(strategy: 'UUID')]
+    #[ORM\Column(type: 'guid')]
     private $id;
 
     #[ORM\ManyToOne(targetEntity: User::class)]
@@ -25,7 +25,7 @@ class Letter
     #[ORM\Column(type: 'text', nullable: true)]
     private $content;
 
-    public function getId(): ?int
+    public function getId(): ?string
     {
         return $this->id;
     }
