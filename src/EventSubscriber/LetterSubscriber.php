@@ -31,6 +31,11 @@ class LetterSubscriber implements EventSubscriberInterface
     public function postUpdate(LifecycleEventArgs $args): void
     {
         $letter = $args->getObject();
+
+        if (!$letter instanceof Letter) {
+            return;
+        }
+
         $path = __DIR__ . '/../../data/';
 
         if (!is_dir($path)) {
