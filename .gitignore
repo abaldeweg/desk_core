@@ -1,5 +1,6 @@
 .php-version
 .scannerwork
+data/
 
 ###> symfony/framework-bundle ###
 /.env.local
