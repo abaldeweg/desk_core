@@ -25,6 +25,14 @@ class Letter
     #[ORM\Column(type: 'text', nullable: true)]
     private $content;
 
+    #[ORM\Column(type: 'datetime', nullable: true)]
+    private $createdAt;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
+
     public function getId(): ?string
     {
         return $this->id;
@@ -74,6 +82,18 @@ class Letter
     public function setContent(?string $content): self
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }
