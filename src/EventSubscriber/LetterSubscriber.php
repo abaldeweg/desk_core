@@ -2,12 +2,12 @@
 
 namespace App\EventSubscriber;
 
-use Doctrine\ORM\Events;
-use Doctrine\Persistence\Event\LifecycleEventArgs;
-use Doctrine\Bundle\DoctrineBundle\EventSubscriber\EventSubscriberInterface;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use App\Entity\Letter;
 use Baldeweg\Bundle\PdfBundle\Pdf;
+use Doctrine\Bundle\DoctrineBundle\EventSubscriber\EventSubscriberInterface;
+use Doctrine\ORM\Events;
+use Doctrine\Persistence\Event\LifecycleEventArgs;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class LetterSubscriber implements EventSubscriberInterface
 {
@@ -36,7 +36,7 @@ class LetterSubscriber implements EventSubscriberInterface
             return;
         }
 
-        $path = __DIR__ . '/../../data/';
+        $path = __DIR__.'/../../data/';
 
         if (!is_dir($path)) {
             mkdir($path);

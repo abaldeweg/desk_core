@@ -6,10 +6,10 @@ use App\Entity\Letter;
 use App\Form\LetterType;
 use Baldeweg\Bundle\ApiBundle\AbstractApiController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 #[Route(path: '/api/letter')]
 class LetterController extends AbstractApiController
@@ -37,7 +37,7 @@ class LetterController extends AbstractApiController
     #[Route(path: '/download/{letter}', methods: ['GET'])]
     public function download(Letter $letter): BinaryFileResponse
     {
-        $file = __DIR__ . '/../../data/' . $letter->getTitle() . '.pdf';
+        $file = __DIR__.'/../../data/'.$letter->getTitle().'.pdf';
         $response = new BinaryFileResponse($file);
 
         return $response;

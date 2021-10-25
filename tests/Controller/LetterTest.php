@@ -30,7 +30,7 @@ EOT;
         $request = $this->request('/api/letter/new', 'POST', [], [
             'title' => 'title',
             'meta' => $meta,
-            'content' => 'content'
+            'content' => 'content',
         ]);
 
         $this->assertTrue(isset($request));
@@ -41,10 +41,10 @@ EOT;
         $id = $request->id;
 
         // edit
-        $request = $this->request('/api/letter/' . $id, 'PUT', [], [
+        $request = $this->request('/api/letter/'.$id, 'PUT', [], [
             'title' => 'title2',
             'meta' => $meta,
-            'content' => 'content2'
+            'content' => 'content2',
         ]);
 
         $this->assertTrue(isset($request));
@@ -53,7 +53,7 @@ EOT;
         $this->assertEquals('content2', $request->content);
 
         // show
-        $request = $this->request('/api/letter/' . $id, 'GET');
+        $request = $this->request('/api/letter/'.$id, 'GET');
 
         $this->assertTrue(isset($request));
         $this->assertEquals('title2', $request->title);
@@ -61,7 +61,7 @@ EOT;
         $this->assertEquals('content2', $request->content);
 
         // delete
-        $request = $this->request('/api/letter/' . $id, 'DELETE');
+        $request = $this->request('/api/letter/'.$id, 'DELETE');
 
         $this->assertEquals('DELETED', $request->msg);
     }
