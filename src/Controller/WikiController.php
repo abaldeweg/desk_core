@@ -25,7 +25,10 @@ class WikiController extends AbstractApiController
     {
         return $this->setResponse()->collection(
             $this->fields,
-            $this->getDoctrine()->getRepository(Wiki::class)->findByUser($this->getUser())
+            $this->getDoctrine()->getRepository(Wiki::class)->findByUser(
+                $this->getUser(),
+                ['createdAt' => 'DESC']
+                )
         );
     }
 
