@@ -20,7 +20,7 @@ class Wiki
     private $title;
 
     #[ORM\Column(type: 'text')]
-    private $body;
+    private $body = '';
 
     public function getId(): ?string
     {
