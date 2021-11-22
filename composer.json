@@ -9,7 +9,7 @@
     "php": ">=8.0",
     "ext-ctype": "*",
     "ext-iconv": "*",
-    "baldeweg/api-bundle": "^0.3.5",
+    "baldeweg/api-bundle": "^0.4.0",
     "baldeweg/extra-bundle": "^0.6.0",
     "baldeweg/pdf-bundle": "^0.1.0",
     "composer/package-versions-deprecated": "1.11.99.2",
