@@ -11,7 +11,7 @@
     "ext-iconv": "*",
     "baldeweg/api-bundle": "^0.4.0",
     "baldeweg/extra-bundle": "^0.6.0",
-    "baldeweg/pdf-bundle": "^0.1.0",
+    "baldeweg/pdf-bundle": "^0.2.0",
     "composer/package-versions-deprecated": "1.11.99.2",
     "doctrine/dbal": "^2.13.6",
     "doctrine/doctrine-bundle": "^2.4",
