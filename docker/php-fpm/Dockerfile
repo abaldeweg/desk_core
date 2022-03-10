@@ -1,14 +1,14 @@
 FROM php:8.1-fpm-alpine3.14
 
 # entry
-COPY entry.sh /entry.sh
+COPY docker/php-fpm/entry.sh /entry.sh
 RUN chmod 755 /entry.sh
 
 # install packages
 RUN apk --update --no-cache add git
 
 # configure php
-COPY override.ini $PHP_INI_DIR/conf.d/override.ini
+COPY docker/php-fpm/override.ini $PHP_INI_DIR/conf.d/override.ini
 
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 RUN install-php-extensions gd pdo_mysql opcache zip intl bcmath tidy gmp apcu imagick
