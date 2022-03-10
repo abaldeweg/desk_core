@@ -38,9 +38,8 @@ class LetterController extends AbstractApiController
     public function download(Letter $letter): BinaryFileResponse
     {
         $file = __DIR__.'/../../data/'.$letter->getTitle().'.pdf';
-        $response = new BinaryFileResponse($file);
 
-        return $response;
+        return new BinaryFileResponse($file);
     }
 
     /**
