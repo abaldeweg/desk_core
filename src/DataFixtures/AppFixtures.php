@@ -19,7 +19,7 @@ class AppFixtures extends Fixture
         $user->setUsername('admin');
         $user->setRoles(['ROLE_ADMIN']);
         $user->setPassword(
-            $this->passwordEncoder->encodePassword(
+            $this->passwordEncoder->hashPassword(
                 $user,
                 'password'
             )
@@ -30,7 +30,7 @@ class AppFixtures extends Fixture
         $user->setUsername('user');
         $user->setRoles(['ROLE_USER']);
         $user->setPassword(
-            $this->passwordEncoder->encodePassword(
+            $this->passwordEncoder->hashPassword(
                 $user,
                 'password'
             )
