@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Persistence\ManagerRegistry;
 
 #[Route(path: '/api/letter')]
 class LetterController extends AbstractApiController
@@ -20,11 +21,11 @@ class LetterController extends AbstractApiController
      * @Security("is_granted('ROLE_USER')")
      */
     #[Route(path: '/', methods: ['GET'])]
-    public function index(): JsonResponse
+    public function index(ManagerRegistry $registry): JsonResponse
     {
         return $this->setResponse()->collection(
             $this->fields,
-            $this->getDoctrine()->getRepository(Letter::class)->findByUser(
+            $registry->getRepository(Letter::class)->findByUser(
                 $this->getUser(),
                 ['createdAt' => 'DESC']
             )
@@ -55,7 +56,7 @@ class LetterController extends AbstractApiController
      * @Security("is_granted('ROLE_USER')")
      */
     #[Route(path: '/new', methods: ['POST'])]
-    public function new(Request $request): JsonResponse
+    public function new(Request $request, ManagerRegistry $registry): JsonResponse
     {
         $letter = new Letter();
         $form = $this->createForm(LetterType::class, $letter);
@@ -63,7 +64,7 @@ class LetterController extends AbstractApiController
             $this->submitForm($request)
         );
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            $em = $registry->getManager();
             $em->persist($letter);
             $em->flush();
 
@@ -77,14 +78,14 @@ class LetterController extends AbstractApiController
      * @Security("is_granted('ROLE_USER')")
      */
     #[Route(path: '/{letter}', methods: ['PUT'])]
-    public function edit(Request $request, Letter $letter): JsonResponse
+    public function edit(Letter $letter, Request $request, ManagerRegistry $registry): JsonResponse
     {
         $form = $this->createForm(LetterType::class, $letter);
         $form->submit(
             $this->submitForm($request)
         );
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            $em = $registry->getManager();
             $em->flush();
 
             return $this->setResponse()->single($this->fields, $letter);
@@ -97,9 +98,9 @@ class LetterController extends AbstractApiController
      * @Security("is_granted('ROLE_USER')")
      */
     #[Route(path: '/{letter}', methods: ['DELETE'])]
-    public function delete(Letter $letter): JsonResponse
+    public function delete(Letter $letter, ManagerRegistry $registry): JsonResponse
     {
-        $em = $this->getDoctrine()->getManager();
+        $em = $registry->getManager();
         $em->remove($letter);
         $em->flush();
 
