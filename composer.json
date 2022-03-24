@@ -1,7 +1,7 @@
 {
   "type": "project",
   "name": "baldeweg/desk_core",
-  "description": "baldeweg Desk contains services like letter and wiki.",
+  "description": "baldeweg Desk contains services like letter.",
   "license": "MIT",
   "minimum-stability": "stable",
   "prefer-stable": true,
