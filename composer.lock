@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e0459d44f2b38015369c423b485df4c7",
+    "content-hash": "cefc73122d0f02d90d642c6936708e51",
     "packages": [
         {
             "name": "baldeweg/api-bundle",
