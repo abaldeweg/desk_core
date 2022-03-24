@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 class LetterSubscriber implements EventSubscriberInterface
 {
-    public function __construct(private TokenStorageInterface $token, private Pdf $pdf)
+    public function __construct(private readonly TokenStorageInterface $token, private readonly Pdf $pdf)
     {
     }
 

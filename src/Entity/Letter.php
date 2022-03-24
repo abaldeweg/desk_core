@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use App\Repository\LetterRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -10,23 +11,23 @@ class Letter
 {
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: 'UUID')]
-    #[ORM\Column(type: 'guid')]
+    #[ORM\Column(type: Types::GUID)]
     private $id;
 
     #[ORM\ManyToOne(targetEntity: User::class)]
-    private $user;
+    private ?User $user = null;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $title;
+    #[ORM\Column(type: Types::STRING, length: 255)]
+    private ?string $title = null;
 
-    #[ORM\Column(type: 'text', nullable: true)]
-    private $meta;
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $meta = null;
 
-    #[ORM\Column(type: 'text', nullable: true)]
-    private $content;
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $content = null;
 
-    #[ORM\Column(type: 'datetime', nullable: true)]
-    private $createdAt;
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $createdAt = null;
 
     public function __construct()
     {
