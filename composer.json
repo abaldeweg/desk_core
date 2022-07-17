@@ -13,7 +13,7 @@
     "baldeweg/extra-bundle": "^1.0.0-beta.2",
     "baldeweg/pdf-bundle": "^0.4",
     "composer/package-versions-deprecated": "1.11.99.5",
-    "doctrine/dbal": "^2.13",
+    "doctrine/dbal": "^3.0",
     "doctrine/doctrine-bundle": "^2.4",
     "doctrine/doctrine-migrations-bundle": "^3.1",
     "doctrine/orm": "^2.9",
