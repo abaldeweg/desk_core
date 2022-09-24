@@ -10,7 +10,7 @@
     "ext-ctype": "*",
     "ext-iconv": "*",
     "baldeweg/api-bundle": "^43.0.0",
-    "baldeweg/extra-bundle": "^1.0.0-beta.2",
+    "baldeweg/extra-bundle": "^43.0.0",
     "baldeweg/pdf-bundle": "^0.4",
     "composer/package-versions-deprecated": "1.11.99.5",
     "doctrine/dbal": "^2.13",
